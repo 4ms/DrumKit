@@ -135,13 +135,13 @@ void init(rack::Plugin *p) {
   p->addModel(modelBD9);
   p->addModel(modelSnare);
   p->addModel(modelClosedHH);
-	p->addModel(modelOpenHH);
-	p->addModel(modelDMX);
+  p->addModel(modelOpenHH);
+  p->addModel(modelDMX);
   p->addModel(modelCR78);
   p->addModel(modelSBD);
   p->addModel(modelGnome);
-  p->addModel(modelSequencer);
+  // p->addModel(modelSequencer);
   p->addModel(modelTomi);
-  p->addModel(modelBaronial);
-  p->addModel(modelMarionette);
+  // p->addModel(modelBaronial);
+  // p->addModel(modelMarionette);
 }
