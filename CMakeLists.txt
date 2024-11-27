@@ -1,0 +1,76 @@
+cmake_minimum_required(VERSION 3.22)
+
+#########################################################
+# Step 1: Include plugin.cmake from the SDK. 
+# You must do this before anything else since it defines the TOOLCHAIN
+include(${METAMODULE_SDK_DIR}/plugin.cmake)
+
+#########################################################
+# Step 2: Define your project name, vesion, etc
+project(SVModularMetaModulePlugin
+    VERSION     0.1
+    DESCRIPTION "SVModular Plugin for MetaModule"
+    LANGUAGES   C CXX ASM
+)
+
+#########################################################
+# Step 3: Create a cmake target for your plugin and add all your sources, compile flags, includes, etc.
+add_library(Drumkit STATIC)
+
+# convenient variable pointing to the VCV Rack repo
+set(SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR})
+
+target_sources(Drumkit
+    PRIVATE
+    ${SOURCE_DIR}/deps/ADSR.cpp
+    ${SOURCE_DIR}/deps/LFO.cpp
+    ${SOURCE_DIR}/deps/LFO.cpp
+    ${SOURCE_DIR}/deps/SynthDevKit/src/CV.cpp
+
+    ${SOURCE_DIR}/src/controller/BD9.cpp
+    ${SOURCE_DIR}/src/controller/CR78.cpp
+    ${SOURCE_DIR}/src/controller/ClosedHH.cpp
+    ${SOURCE_DIR}/src/controller/DMX.cpp
+    ${SOURCE_DIR}/src/controller/Gnome.cpp
+    ${SOURCE_DIR}/src/controller/OpenHH.cpp
+    ${SOURCE_DIR}/src/controller/SBD.cpp
+    ${SOURCE_DIR}/src/controller/SampleController.cpp
+    ${SOURCE_DIR}/src/controller/Snare.cpp
+    ${SOURCE_DIR}/src/controller/Tomi.cpp
+
+    ${SOURCE_DIR}/src/model/SampleManager.cpp
+
+    ${SOURCE_DIR}/src/view/BD9.cpp
+    ${SOURCE_DIR}/src/view/CR78.cpp
+    ${SOURCE_DIR}/src/view/ClosedHH.cpp
+    ${SOURCE_DIR}/src/view/DMX.cpp
+    ${SOURCE_DIR}/src/view/Gnome.cpp
+    ${SOURCE_DIR}/src/view/OpenHH.cpp
+    ${SOURCE_DIR}/src/view/SBD.cpp
+    ${SOURCE_DIR}/src/view/Snare.cpp
+    ${SOURCE_DIR}/src/view/Tomi.cpp
+
+    ${SOURCE_DIR}/src/DrumKit.cpp
+)
+
+target_include_directories(Drumkit PRIVATE
+    ${SOURCE_DIR}
+)
+
+target_compile_options(Drumkit
+    PRIVATE
+    # No flags needed
+)
+
+set_property(TARGET Drumkit PROPERTY CXX_STANDARD 20)
+
+
+#########################################################
+# Step 4: call create_plugin()
+create_plugin(
+    SOURCE_LIB      Drumkit                             # This is the cmake target name (defined in add_target)
+    PLUGIN_NAME     Drumkit                             # This must match the brand "slug" used in VCV Rack
+    PLUGIN_JSON     ${SOURCE_DIR}/plugin.json           # Path to the plugin.json file used by VCV Rack
+    SOURCE_ASSETS   ${SOURCE_DIR}/assets                # Path to the assets/ dir containing the PNGs
+    DESTINATION     ${SOURCE_DIR}/metamodule-plugins    # Path to where you want the plugin file output
+)

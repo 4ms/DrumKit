@@ -29,3 +29,6 @@ DISTRIBUTABLES += $(wildcard LICENSE*) res
 # Must include the VCV plugin Makefile framework
 RACK_DIR ?= ../..
 include $(RACK_DIR)/plugin.mk
+
+# Include the metamodule build wrapper
+include metamodule.mk
