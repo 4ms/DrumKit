@@ -1,0 +1,44 @@
+{
+    "MetaModulePluginMaintainer": "",
+    "MetaModulePluginMaintainerEmail": "",
+    "MetaModulePluginMaintainerUrl": "",
+    "MetaModuleDescription": "SV Modular DrumKit",
+    "MetaModuleIncludedModules": [
+    {
+      "slug": "BassDrum9",
+      "name": "Bass Drum 9"
+    },
+    {
+      "slug": "ClosedHiHat",
+      "name": "Closed HiHat"
+    },
+    {
+      "slug": "CR78",
+      "name": "CR78"
+    },
+    {
+      "slug": "DMX",
+      "name": "DMX"
+    },
+    {
+      "slug": "OpenHiHat",
+      "name": "Open HiHat"
+    },
+    {
+      "slug": "SyntheticBassDrum",
+      "name": "Synthetic Bass Drum"
+    },
+    {
+      "slug": "SnareDrumN",
+      "name": "Snare Drum N"
+    },
+    {
+      "slug": "Tomi",
+      "name": "Tomi"
+    },
+    {
+      "slug": "Gnome",
+      "name": "Gnome"
+    }
+    ]
+}
