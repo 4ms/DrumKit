@@ -19,26 +19,32 @@ target_sources(Drumkit
     ${SOURCE_DIR}/deps/LFO.cpp
     ${SOURCE_DIR}/deps/SynthDevKit/src/CV.cpp
 
+    ${SOURCE_DIR}/src/controller/Baronial.cpp
     ${SOURCE_DIR}/src/controller/BD9.cpp
     ${SOURCE_DIR}/src/controller/CR78.cpp
     ${SOURCE_DIR}/src/controller/ClosedHH.cpp
     ${SOURCE_DIR}/src/controller/DMX.cpp
     ${SOURCE_DIR}/src/controller/Gnome.cpp
     ${SOURCE_DIR}/src/controller/OpenHH.cpp
+    ${SOURCE_DIR}/src/controller/Marionette.cpp
     ${SOURCE_DIR}/src/controller/SBD.cpp
     ${SOURCE_DIR}/src/controller/SampleController.cpp
+    ${SOURCE_DIR}/src/controller/Sequencer.cpp
     ${SOURCE_DIR}/src/controller/Snare.cpp
     ${SOURCE_DIR}/src/controller/Tomi.cpp
 
     ${SOURCE_DIR}/src/model/SampleManager.cpp
 
+    ${SOURCE_DIR}/src/view/Baronial.cpp
     ${SOURCE_DIR}/src/view/BD9.cpp
     ${SOURCE_DIR}/src/view/CR78.cpp
     ${SOURCE_DIR}/src/view/ClosedHH.cpp
     ${SOURCE_DIR}/src/view/DMX.cpp
     ${SOURCE_DIR}/src/view/Gnome.cpp
+    ${SOURCE_DIR}/src/view/Marionette.cpp
     ${SOURCE_DIR}/src/view/OpenHH.cpp
     ${SOURCE_DIR}/src/view/SBD.cpp
+    ${SOURCE_DIR}/src/view/Sequencer.cpp
     ${SOURCE_DIR}/src/view/Snare.cpp
     ${SOURCE_DIR}/src/view/Tomi.cpp
 
