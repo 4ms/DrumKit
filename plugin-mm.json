@@ -39,6 +39,20 @@
     {
       "slug": "Gnome",
       "name": "Gnome"
+    },
+    {
+      "slug": "Sequencer",
+      "name": "Sequencer"
+      ]
+    },
+    {
+      "slug": "Baronial",
+      "name": "Baronial"
+      ]
+    },
+    {
+      "slug": "MarionetteBass",
+      "name": "Marionette Bass"
     }
     ]
 }
