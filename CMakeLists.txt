@@ -1,20 +1,12 @@
 cmake_minimum_required(VERSION 3.22)
-
-#########################################################
-# Step 1: Include plugin.cmake from the SDK. 
-# You must do this before anything else since it defines the TOOLCHAIN
 include(${METAMODULE_SDK_DIR}/plugin.cmake)
 
-#########################################################
-# Step 2: Define your project name, vesion, etc
 project(SVModularMetaModulePlugin
     VERSION     0.1
     DESCRIPTION "SVModular Plugin for MetaModule"
     LANGUAGES   C CXX ASM
 )
 
-#########################################################
-# Step 3: Create a cmake target for your plugin and add all your sources, compile flags, includes, etc.
 add_library(Drumkit STATIC)
 
 # convenient variable pointing to the VCV Rack repo
@@ -64,13 +56,14 @@ target_compile_options(Drumkit
 
 set_property(TARGET Drumkit PROPERTY CXX_STANDARD 20)
 
+if("${INSTALL_DIR}" STREQUAL "")
+    set(INSTALL_DIR ${CMAKE_CURRENT_LIST_DIR}/metamodule-plugins)
+endif()
 
-#########################################################
-# Step 4: call create_plugin()
 create_plugin(
-    SOURCE_LIB      Drumkit                             # This is the cmake target name (defined in add_target)
-    PLUGIN_NAME     Drumkit                             # This must match the brand "slug" used in VCV Rack
-    PLUGIN_JSON     ${SOURCE_DIR}/plugin.json           # Path to the plugin.json file used by VCV Rack
-    SOURCE_ASSETS   ${SOURCE_DIR}/assets                # Path to the assets/ dir containing the PNGs
-    DESTINATION     ${SOURCE_DIR}/metamodule-plugins    # Path to where you want the plugin file output
+    SOURCE_LIB      Drumkit                     # This is the cmake target name (defined in add_target)
+    PLUGIN_NAME     Drumkit                     # This must match the brand "slug" used in VCV Rack
+    PLUGIN_JSON     ${SOURCE_DIR}/plugin.json   # Path to the plugin.json file used by VCV Rack
+    SOURCE_ASSETS   ${SOURCE_DIR}/assets        # Path to the assets/ dir containing the PNGs
+    DESTINATION     ${INSTALL_DIR}              # Path to where you want the plugin file output
 )
