@@ -75,8 +75,8 @@ float MarionetteModule::ampEnvelope ( ) {
   // if there is a cable plugged into the amp envelope input, use it
   // division by 5 helps bring us down to a nominal -1 to 1, but realisticly
   // any value should "work", but may not be desirable
-  if (inputs[AMP_ENV_IN].active) {
-    return inputs[AMP_ENV_IN].value / 5;
+  if (inputs[AMP_ENV_IN].isConnected()) {
+    return inputs[AMP_ENV_IN].getVoltage() / 5;
   }
 
   float decay = paramValue(AMP_DECAY_PARAM, AMP_DECAY_CV_IN, 0, 2.2);

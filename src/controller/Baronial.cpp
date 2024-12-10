@@ -4,9 +4,9 @@
 float BaronialModule::paramValue (uint16_t param, uint16_t input, float low, float high) {
   float current = params[param].value;
 
-  if (inputs[input].active) {
+  if (inputs[input].isConnected()) {
     // high - low, divided by one tenth input voltage, plus the current value
-    current += ((inputs[input].value / 10) * (high - low));
+    current += ((inputs[input].getVoltage() / 10) * (high - low));
   }
 
   return clamp(current, low, high);
