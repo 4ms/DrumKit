@@ -7,12 +7,12 @@ project(SVModularMetaModulePlugin
     LANGUAGES   C CXX ASM
 )
 
-add_library(Drumkit STATIC)
+add_library(DrumKit STATIC)
 
 # convenient variable pointing to the VCV Rack repo
 set(SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR})
 
-target_sources(Drumkit
+target_sources(DrumKit
     PRIVATE
     ${SOURCE_DIR}/deps/ADSR.cpp
     ${SOURCE_DIR}/deps/LFO.cpp
@@ -51,24 +51,24 @@ target_sources(Drumkit
     ${SOURCE_DIR}/src/DrumKit.cpp
 )
 
-target_include_directories(Drumkit PRIVATE
+target_include_directories(DrumKit PRIVATE
     ${SOURCE_DIR}
 )
 
-target_compile_options(Drumkit
+target_compile_options(DrumKit
     PRIVATE
     # No flags needed
 )
 
-set_property(TARGET Drumkit PROPERTY CXX_STANDARD 20)
+set_property(TARGET DrumKit PROPERTY CXX_STANDARD 20)
 
 if("${INSTALL_DIR}" STREQUAL "")
     set(INSTALL_DIR ${CMAKE_CURRENT_LIST_DIR}/metamodule-plugins)
 endif()
 
 create_plugin(
-    SOURCE_LIB      Drumkit                     # This is the cmake target name (defined in add_target)
-    PLUGIN_NAME     Drumkit                     # This must match the brand "slug" used in VCV Rack
+    SOURCE_LIB      DrumKit                     # This is the cmake target name (defined in add_target)
+    PLUGIN_NAME     DrumKit                     # This must match the brand "slug" used in VCV Rack
     PLUGIN_JSON     ${SOURCE_DIR}/plugin.json   # Path to the plugin.json file used by VCV Rack
     SOURCE_ASSETS   ${SOURCE_DIR}/assets        # Path to the assets/ dir containing the PNGs
     DESTINATION     ${INSTALL_DIR}              # Path to where you want the plugin file output
