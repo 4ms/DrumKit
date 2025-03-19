@@ -62,7 +62,7 @@ void OpenHHModule::setupSamples() {
   char name[32];
 
   for (uint8_t i = 0; i < numSamples; i++) {
-    sprintf(name, "openhh-%02d", i + 1);
+    snprintf(name, sizeof name, "openhh-%02d", i + 1);
     samples[i] = sampleManager->selectSample(name);
   }
 }

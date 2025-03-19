@@ -18,9 +18,9 @@ struct BPMDisplay : TransparentWidget {
     nvgFillColor(args.vg, nvgRGBA(0x00, 0xff, 0x00, 0xff));
 
     if (value) {
-      sprintf(text, "%03d", (uint8_t) *value);
+      snprintf(text, sizeof text, "%03d", (uint8_t) *value);
     } else {
-      sprintf(text, "115");
+      snprintf(text, sizeof text, "115");
     }
 
     nvgText(args.vg, 0, 0, text, NULL);
@@ -72,12 +72,12 @@ struct TrackDisplay : TransparentWidget {
 
     if (value) {
       if (*value) {
-        sprintf(text, "%02d", *value);
+        snprintf(text, sizeof text, "%02d", *value);
       } else {
-        sprintf(text, "--");
+        snprintf(text, sizeof text, "--");
       }
     } else {
-      sprintf(text, "01");
+      snprintf(text, sizeof text, "01");
     }
 
     nvgText(args.vg, 0, 0, text, NULL);
@@ -103,12 +103,12 @@ struct SmallTrackDisplay : TransparentWidget {
 
     if (value) {
       if (*value) {
-        sprintf(text, "%02d", *value);
+        snprintf(text, sizeof text, "%02d", *value);
       } else {
-        sprintf(text, "--");
+        snprintf(text, sizeof text, "--");
       }
     } else {
-      sprintf(text, "01");
+      snprintf(text, sizeof text, "01");
     }
 
     nvgText(args.vg, 0, 0, text, NULL);

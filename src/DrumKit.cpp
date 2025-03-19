@@ -60,7 +60,7 @@ void setupSamples ( ) {
   // bd9
   for (uint8_t i = 1; i < 17; i++) {
     char buf[64];
-    sprintf(buf, "%02d", i);
+    snprintf(buf, sizeof buf, "%02d", i);
     arr = loadSample(std::string("res/samples/bd9/") + buf + ".raw", &size);
     DrumKit::Sample *bd9 = new DrumKit::Sample((uint64_t) size, std::string("bd9-") + buf, arr, 0);
     sampleManager->addSample(bd9);
@@ -69,7 +69,7 @@ void setupSamples ( ) {
   // snare
   for (uint8_t i = 1; i < 17; i++) {
     char buf[64];
-    sprintf(buf, "%02d", i);
+    snprintf(buf, sizeof buf, "%02d", i);
     arr = loadSample(std::string("res/samples/snare/") + buf + ".raw", &size);
     DrumKit::Sample *snare = new DrumKit::Sample((uint64_t) size, std::string("snare-") + buf, arr, 0);
     sampleManager->addSample(snare);
@@ -78,7 +78,7 @@ void setupSamples ( ) {
   // closed hh
   for (uint8_t i = 1; i < 16; i++) {
     char buf[64];
-    sprintf(buf, "%02d", i);
+    snprintf(buf, sizeof buf, "%02d", i);
     arr = loadSample(std::string("res/samples/closedhh/") + buf + ".raw", &size);
     DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("closedhh-") + buf, arr, 0);
     sampleManager->addSample(hh);
@@ -87,7 +87,7 @@ void setupSamples ( ) {
   // open hh
   for (uint8_t i = 1; i < 15; i++) {
     char buf[64];
-    sprintf(buf, "%02d", i);
+    snprintf(buf, sizeof buf, "%02d", i);
     arr = loadSample(std::string("res/samples/openhh/") + buf + ".raw", &size);
     DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("openhh-") + buf, arr, 0);
     sampleManager->addSample(hh);
@@ -96,7 +96,7 @@ void setupSamples ( ) {
   // cr78
   for (uint8_t i = 1; i < 8; i++) {
     char buf[64];
-    sprintf(buf, "%02d", i);
+    snprintf(buf, sizeof buf, "%02d", i);
     arr = loadSample(std::string("res/samples/cr78/") + buf + ".raw", &size);
     DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("cr78-") + buf, arr, 0);
     sampleManager->addSample(hh);
@@ -105,7 +105,7 @@ void setupSamples ( ) {
   // dmx
   for (uint8_t i = 1; i < 13; i++) {
     char buf[64];
-    sprintf(buf, "%02d", i);
+    snprintf(buf, sizeof buf, "%02d", i);
     arr = loadSample(std::string("res/samples/dmx/") + buf + ".raw", &size);
     DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("dmx-") + buf, arr, 0);
     sampleManager->addSample(hh);
@@ -114,7 +114,7 @@ void setupSamples ( ) {
   // tomi
   for (uint8_t i = 1; i < 15; i++) {
     char buf[64];
-    sprintf(buf, "%02d", i);
+    snprintf(buf, sizeof buf, "%02d", i);
     arr = loadSample(std::string("res/samples/tomi/") + buf + ".raw", &size);
     DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("tomi-") + buf, arr, 0);
     sampleManager->addSample(hh);

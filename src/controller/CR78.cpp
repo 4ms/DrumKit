@@ -29,7 +29,7 @@ void CR78Module::setupSamples() {
   char name[32];
 
   for (uint8_t i = 0; i < numSamples; i++) {
-    sprintf(name, "cr78-%02d", i + 1);
+    snprintf(name, sizeof name, "cr78-%02d", i + 1);
     samples[i] = sampleManager->selectSample(name);
   }
 }

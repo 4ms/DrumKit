@@ -29,7 +29,7 @@ void TomiModule::setupSamples() {
   char name[32];
 
   for (uint8_t i = 0; i < numSamples; i++) {
-    sprintf(name, "tomi-%02d", i + 1);
+    snprintf(name, sizeof name, "tomi-%02d", i + 1);
     samples[i] = sampleManager->selectSample(name);
   }
 }
