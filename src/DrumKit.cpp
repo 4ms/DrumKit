@@ -3,7 +3,11 @@
 #include "DrumKit.hpp"
 
 // The plugin-wide instance of the Plugin class
+#ifdef METAMODULE_BUILTIN
+extern Plugin *pluginInstance;
+#else
 Plugin *pluginInstance;
+#endif
 
 // sample manager instance
 DrumKit::SampleManager *sampleManager = nullptr;
@@ -123,7 +127,11 @@ void setupSamples ( ) {
 }
 
 
+#ifdef METAMODULE_BUILTIN
+void init_DrumKit(rack::Plugin *p) {
+#else
 void init(rack::Plugin *p) {
+#endif
   pluginInstance = p;
 
 
