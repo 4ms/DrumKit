@@ -34,16 +34,13 @@ SequencerModule::SequencerModule() {
 
     // set up the programs for default, first is "1", the rest are 0
     programs[i] = 0;
-
-    configParam<Blank>(PATTERN_UP + i, 0.0, 1.0, 0.0, "Up");
-    configParam<Blank>(PATTERN_DOWN + i, 0.0, 1.0, 0.0, "Down");
   }
   programs[0] = 1;
 
   for (int i = 0; i < SEQ_TRACKS; i++) {
     // sequence pads
     for (int j = 0; j < SEQ_BEATS; j++) {
-      configParam<Toggle>(PAD_PARAM + j + (i * SEQ_BEATS), 0.0, 1.0, 0.0, std::to_string(j + 1) + "/" + std::to_string(i + 1));
+      configSwitch<Toggle>(PAD_PARAM + j + (i * SEQ_BEATS), 0.0, 1.0, 0.0, std::to_string(j + 1) + "/" + std::to_string(i + 1));
     }
   }
 
@@ -57,13 +54,56 @@ SequencerModule::SequencerModule() {
   }
 
   configParam<PercentTen>(PULSE_WIDTH, 0.1, 10.0, 5.05, "Width", "%");
-  configParam<Blank>(PLAY, 0.0f, 1.0f, 0.0f, "Run");
-  configParam<Blank>(CYCLE, 0.0f, 1.0f, 0.0f, "Cycle");
-  configParam<Blank>(MAIN_UP, 0.0f, 1.0f, 0.0f, "Up");
-  configParam<Blank>(MAIN_DOWN, 0.0f, 1.0f, 0.0f, "Down");
-  configParam<Blank>(COPY, 0.0f, 1.0f, 0.0f, "Copy");
-  configParam<Blank>(PASTE, 0.0f, 1.0f, 0.0f, "Paste");
+  configSwitch<Blank>(PLAY, 0.0f, 1.0f, 0.0f, "Run");
+  configSwitch<Blank>(CYCLE, 0.0f, 1.0f, 0.0f, "Cycle");
+  configSwitch<Blank>(MAIN_UP, 0.0f, 1.0f, 0.0f, "Main Seq Up");
+  configSwitch<Blank>(MAIN_DOWN, 0.0f, 1.0f, 0.0f, "Main Seq Down");
+  configSwitch<Blank>(COPY, 0.0f, 1.0f, 0.0f, "Copy");
+  configSwitch<Blank>(PASTE, 0.0f, 1.0f, 0.0f, "Paste");
 
+  configSwitch<Blank>(PATTERN_UP, 0.0, 1.0, 0.0, "Sel. Up 1");
+  configSwitch<Blank>(PATTERN_UP + 1, 0.0, 1.0, 0.0, "Sel. Up 2");
+  configSwitch<Blank>(PATTERN_UP + 2, 0.0, 1.0, 0.0, "Sel. Up 3");
+  configSwitch<Blank>(PATTERN_UP + 3, 0.0, 1.0, 0.0, "Sel. Up 4");
+  configSwitch<Blank>(PATTERN_UP + 4, 0.0, 1.0, 0.0, "Sel. Up 5");
+  configSwitch<Blank>(PATTERN_UP + 5, 0.0, 1.0, 0.0, "Sel. Up 6");
+  configSwitch<Blank>(PATTERN_UP + 6, 0.0, 1.0, 0.0, "Sel. Up 7");
+  configSwitch<Blank>(PATTERN_UP + 7, 0.0, 1.0, 0.0, "Sel. Up 8");
+
+  configSwitch<Blank>(PATTERN_DOWN, 0.0, 1.0, 0.0, "Sel. Down 1");
+  configSwitch<Blank>(PATTERN_DOWN + 1, 0.0, 1.0, 0.0, "Sel. Down 2");
+  configSwitch<Blank>(PATTERN_DOWN + 2, 0.0, 1.0, 0.0, "Sel. Down 3");
+  configSwitch<Blank>(PATTERN_DOWN + 3, 0.0, 1.0, 0.0, "Sel. Down 4");
+  configSwitch<Blank>(PATTERN_DOWN + 4, 0.0, 1.0, 0.0, "Sel. Down 5");
+  configSwitch<Blank>(PATTERN_DOWN + 5, 0.0, 1.0, 0.0, "Sel. Down 6");
+  configSwitch<Blank>(PATTERN_DOWN + 6, 0.0, 1.0, 0.0, "Sel. Down 7");
+  configSwitch<Blank>(PATTERN_DOWN + 7, 0.0, 1.0, 0.0, "Sel. Down 8");
+
+  configInput(CLOCK, "Clock");
+  configInput(RUN_CV, "Run Gate");
+  configInput(CYCLE_CV, "Cycle Gate");
+  configInput(RESET, "Reset");
+  configInput(PULSE_WIDTH_CV, "Pulse Width CV");
+  configInput(MAIN_SELECT, "Main Seq CV");
+
+  configInput(TRACK_SELECT, "Seq CV 1");
+  configInput(TRACK_SELECT + 1, "Seq CV 2");
+  configInput(TRACK_SELECT + 2, "Seq CV 3");
+  configInput(TRACK_SELECT + 3, "Seq CV 4");
+  configInput(TRACK_SELECT + 4, "Seq CV 5");
+  configInput(TRACK_SELECT + 5, "Seq CV 6");
+  configInput(TRACK_SELECT + 6, "Seq CV 7");
+  configInput(TRACK_SELECT + 7, "Seq CV 8");
+
+
+  configOutput(GATE_OUT, "Aux 1 Gate Out");
+  configOutput(GATE_OUT + 1, "Aux 2 Gate Out");
+  configOutput(GATE_OUT + 2, "Tom 1 Gate Out");
+  configOutput(GATE_OUT + 3, "Tom 2 Gate Out");
+  configOutput(GATE_OUT + 4, "Open HH Gate Out");
+  configOutput(GATE_OUT + 5, "Closed HH Gate Out");
+  configOutput(GATE_OUT + 6, "Snare Gate Out");
+  configOutput(GATE_OUT + 7, "Bass Gate Out");
   doReset();
 }
 
