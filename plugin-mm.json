@@ -1,8 +1,10 @@
 {
-    "MetaModulePluginMaintainer": "",
-    "MetaModulePluginMaintainerEmail": "",
-    "MetaModulePluginMaintainerUrl": "",
-    "MetaModuleDescription": "SV Modular DrumKit",
+	"MetaModuleBrandName": "DrumKit",
+	"MetaModuleBrandSlug": "DrumKit",
+	"MetaModulePluginMaintainer": "4ms Company",
+	"MetaModulePluginMaintainerEmail": "4ms@4mscompany.com",
+	"MetaModulePluginMaintainerUrl": "https://metamodule.info",
+    "MetaModuleDescription": "SV Modular DrumKit ported from VCV",
     "MetaModuleIncludedModules": [
     {
       "slug": "BassDrum9",
