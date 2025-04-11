@@ -14,6 +14,19 @@ SampleController::~SampleController() {
     delete cv[i];
 }
 
+void SampleController::setupWidgetNames(unsigned numSamples, unsigned defaultSample) {
+  for (int i = 0; i < 2; i++) {
+	  auto chan = "Ch. " + std::to_string(i + 1);
+	  configParam(DRUM_PARAM + i, 0.0, numSamples, defaultSample, "Select " + chan);
+	  configParam(TUNE_PARAM + i, 0.2, 1.8, 1, "Playback Speed " + chan, "x");
+	  configInput(DRUM_CV + i, "Sample Select CV " + chan);
+	  configInput(GATE_INPUT + i, "Gate " + chan);
+	  configInput(TUNE_CV + i, "Tune CV " + chan);
+	  configOutput(AUDIO_OUTPUT + i, "Out " + chan);
+  }
+
+}
+
 float SampleController::paramValue (uint16_t param, uint16_t input, float low, float high) {
   float current = params[param].getValue();
 
