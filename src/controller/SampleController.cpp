@@ -17,11 +17,11 @@ SampleController::~SampleController() {
 void SampleController::setupWidgetNames(unsigned numSamples, unsigned defaultSample) {
   for (int i = 0; i < 2; i++) {
 	  auto chan = "Ch. " + std::to_string(i + 1);
-	  configParam(DRUM_PARAM + i, 0.0, numSamples, defaultSample, "Select " + chan);
-	  configParam(TUNE_PARAM + i, 0.2, 1.8, 1, "Playback Speed " + chan, "x");
-	  configInput(DRUM_CV + i, "Sample Select CV " + chan);
-	  configInput(GATE_INPUT + i, "Gate " + chan);
-	  configInput(TUNE_CV + i, "Tune CV " + chan);
+	  configParam(DRUM_PARAM + i, 0.0, numSamples, defaultSample, "Sample " + chan);
+	  configParam(TUNE_PARAM + i, 0.2, 1.8, 1, "Tune " + chan, "x");
+	  configInput(DRUM_CV + i, "Sample CV In " + chan);
+	  configInput(GATE_INPUT + i, "Gate In " + chan);
+	  configInput(TUNE_CV + i, "Tune CV In " + chan);
 	  configOutput(AUDIO_OUTPUT + i, "Out " + chan);
   }
 
