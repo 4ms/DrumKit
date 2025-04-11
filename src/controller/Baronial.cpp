@@ -16,14 +16,24 @@ BaronialModule::BaronialModule() {
   config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
   gate = new SynthDevKit::CV(0.5);
 
-  configParam(ATTACK_TIME_PARAM, 0.001, 4.999, 1.0, "Time", " Seconds");
+  configParam(ATTACK_TIME_PARAM, 0.001, 4.999, 1.0, "Attack Time", " Seconds");
   configParam<Slope>(ATTACK_CURVE_PARAM, 0.0, 1.0, 1.0);
-  configParam(DECAY_TIME_PARAM, 0.001, 4.999, 1.0, "Time", " Seconds");
+  configParam(DECAY_TIME_PARAM, 0.001, 4.999, 1.0, "Decay Time", " Seconds");
   configParam<Slope>(DECAY_CURVE_PARAM, 0.0, 1.0, 1.0);
-  configParam(SUSTAIN_TIME_PARAM, 0.001, 4.999, 1.0, "Time", " Seconds");
-  configParam(SUSTAIN_LEVEL_PARAM, 0.001, 4.999, 1.0, "Level", " Volts");
-  configParam(RELEASE_TIME_PARAM, 0.001, 4.999, 1.0, "Time", " Seconds");
+  configParam(SUSTAIN_TIME_PARAM, 0.001, 4.999, 1.0, "Sustain Time", " Seconds");
+  configParam(SUSTAIN_LEVEL_PARAM, 0.001, 4.999, 1.0, "Sustain Level", " Volts");
+  configParam(RELEASE_TIME_PARAM, 0.001, 4.999, 1.0, "Release Time", " Seconds");
   configParam<Slope>(RELEASE_CURVE_PARAM, 0.0, 1.0, 1.0);
+  configSwitch(ATTACK_CURVE_PARAM, 0.f, 1.f, 0.f, "Attack Curve", {"Linear", "Exponential"});
+  configSwitch(DECAY_CURVE_PARAM, 0.f, 1.f, 0.f, "Decay Curve", {"Linear", "Exponential"});
+  configSwitch(RELEASE_CURVE_PARAM, 0.f, 1.f, 0.f, "Release Curve", {"Linear", "Exponential"});
+  configInput(GATE, "Gate");
+  configInput(ATTACK_TIME_CV, "Attack Time CV");
+  configInput(DECAY_TIME_CV, "Decay Time CV");
+  configInput(SUSTAIN_TIME_CV, "Sustain Time CV");
+  configInput(SUSTAIN_LEVEL_CV, "Sustain Level CV");
+  configInput(RELEASE_TIME_CV, "Release Time CV");
+  configOutput(OUT, "Envelope");
 }
 
 BaronialModule::~BaronialModule() {

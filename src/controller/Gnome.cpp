@@ -7,7 +7,24 @@ GnomeModule::GnomeModule () {
   configParam(BPM, 30.0f, 200.0f, 115.0f, "Speed", " Beats per Minute");
   configParam<Percent>(WIDTH, 0.1f, 0.6f, 0.35, "Width");
   configParam<Blank>(RUN, 0.0f, 1.0f, 0.0f, "Run");
-  configParam<Swing>(SWING, 0.0f, 1.0f, 0.0f, "Swing Note");
+  configSwitch<Swing>(SWING, 0.0f, 1.0f, 0.0f, "Swing Note", {"/8", "/16"});
+
+  configInput(RESET, "Reset");
+  configInput(BPM_CV, "BPM CV");
+  configInput(RUN_CV, "Run Gate");
+  configInput(WIDTH_CV, "Width CV");
+
+  configOutput(NOTE_1, "/1");
+  configOutput(NOTE_2, "/2");
+  configOutput(NOTE_4, "/4");
+  configOutput(NOTE_8, "/8");
+  configOutput(NOTE_16, "/16");
+  configOutput(NOTE_A, "/A");
+  configOutput(NOTE_B, "/B");
+  configOutput(NOTE_C, "/C");
+  configOutput(NOTE_D, "/D");
+  configOutput(NOTE_E, "/E");
+  configOutput(NOTE_F, "/F");
 
   reset = new SynthDevKit::CV(0.5f);
   runCV = new SynthDevKit::CV(0.5f);

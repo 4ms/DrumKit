@@ -35,8 +35,10 @@ SequencerModule::SequencerModule() {
     // set up the programs for default, first is "1", the rest are 0
     programs[i] = 0;
 
-    configParam<Blank>(PATTERN_UP + i, 0.0, 1.0, 0.0, "Up");
-    configParam<Blank>(PATTERN_DOWN + i, 0.0, 1.0, 0.0, "Down");
+    configParam<Blank>(PATTERN_UP + i, 0.0, 1.0, 0.0, "Track Step " + std::to_string(i) + " Up");
+    configParam<Blank>(PATTERN_DOWN + i, 0.0, 1.0, 0.0, "Track Step " + std::to_string(i) + "Down");
+    configInput(TRACK_SELECT + i, "Track Step CV " + std::to_string(i));
+    configOutput(GATE_OUT + i, "Gate Out " + std::to_string(i));
   }
   programs[0] = 1;
 
@@ -59,10 +61,17 @@ SequencerModule::SequencerModule() {
   configParam<PercentTen>(PULSE_WIDTH, 0.1, 10.0, 5.05, "Width", "%");
   configParam<Blank>(PLAY, 0.0f, 1.0f, 0.0f, "Run");
   configParam<Blank>(CYCLE, 0.0f, 1.0f, 0.0f, "Cycle");
-  configParam<Blank>(MAIN_UP, 0.0f, 1.0f, 0.0f, "Up");
-  configParam<Blank>(MAIN_DOWN, 0.0f, 1.0f, 0.0f, "Down");
+  configParam<Blank>(MAIN_UP, 0.0f, 1.0f, 0.0f, "Seq Select Up");
+  configParam<Blank>(MAIN_DOWN, 0.0f, 1.0f, 0.0f, "Seq Select Down");
   configParam<Blank>(COPY, 0.0f, 1.0f, 0.0f, "Copy");
   configParam<Blank>(PASTE, 0.0f, 1.0f, 0.0f, "Paste");
+
+  configInput(CLOCK, "Clock");
+  configInput(RUN_CV, "Run Gate");
+  configInput(CYCLE_CV, "Cycle Gate");
+  configInput(RESET, "Reset");
+  configInput(PULSE_WIDTH_CV, "Pulse Width CV");
+  configInput(MAIN_SELECT, "Seq Select CV");
 
   doReset();
 }
