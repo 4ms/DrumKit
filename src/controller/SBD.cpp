@@ -12,8 +12,15 @@ SBDModule::SBDModule( ) {
   configParam<Percent>(SBDModule::SUBOCT_MIX_PARAM, 0.0, 1.0, 0.5, "Mix");
   configParam(SBDModule::DRIVE_PARAM, 0.0, 10.0, 5.0, "Drive");
   configParam(SBDModule::CLICK_PARAM, 0.0, 2.5, 1.25, "Click Level", " Volts");
-  configParam<SubOct>(SBDModule::SUBOCT_PARAM, 0.0, 2.0, 0.0, "Sub Octave");
-  configParam<WaveShape>(SBDModule::WAVE_PARAM, 0.0, 1.0, 1.0, "Wave");
+  configSwitch<SubOct>(SBDModule::SUBOCT_PARAM, 0.0, 2.0, 0.0, "Sub Octave", {"-0", "-1", "-2"});
+  configSwitch<WaveShape>(SBDModule::WAVE_PARAM, 0.0, 1.0, 1.0, "Wave", {"Square", "Sine"});
+
+  configInput(GATE_INPUT, "Gate");
+  configInput(PITCH_CV_INPUT, "Pitch CV");
+  configInput(PITCH_DECAY_CV_INPUT, "Pitch Decay CV");
+  configInput(AMP_DECAY_CV_INPUT, "Amp Decay CV");
+
+  configOutput(AUDIO_OUTPUT, "Audio Output");
 }
 
 SBDModule::~SBDModule() {

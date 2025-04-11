@@ -7,17 +7,33 @@ MarionetteModule::MarionetteModule( ) {
   configParam(PITCH_DECAY_PARAM, 0.1, 2.2, 0.4, "Decay", " Seconds");
   configParam(PITCH_SUSTAIN_PARAM, 0.1, 0.9, 0.2, "Sustain", " Seconds");
   configParam(PITCH_RELEASE_PARAM, 0.1, 2.9, 0.3, "Release", " Seconds");
-  configParam<Direction>(PITCH_DECAY_DIR_PARAM, 0.0, 1.0, 0.0, "Decay Direction");
+  configSwitch<Direction>(PITCH_DECAY_DIR_PARAM, 0.0, 1.0, 0.0, "Decay Direction", {"Down", "Up"});
   configParam(AMP_DECAY_PARAM, 0.1, 2.2, 0.4, "Decay", " Seconds");
   configParam(AMP_SUSTAIN_PARAM, 0.1, 0.9, 0.5, "Sustain", " Seconds");
   configParam(AMP_RELEASE_PARAM, 0.1, 2.9, 0.4, "Release", " Seconds");
-  configParam<Direction>(AMP_DECAY_DIR_PARAM, 0.0, 1.0, 0.0, "Decay Direction");
+  configSwitch<Direction>(AMP_DECAY_DIR_PARAM, 0.0, 1.0, 0.0, "Decay Direction", {"Down", "Up"});
   configParam<PercentTen>(BLEND_PARAM, 0, 10, 5, "Blend");
   configParam(TUNE_PARAM, 0.2, 1.8, 1, "Tune");
   configParam<PercentTen>(SUBOCT_MIX_PARAM, 0, 5, 2.5, "Mix");
   configParam<WaveMix>(SUBOCT_WAVE_PARAM, 0, 10, 5, "Square/Sine");
-  configParam<SubOct>(SUBOCT_OCT_PARAM, 0, 2, 1, "Sub Octave");
+  configSwitch<SubOct>(SUBOCT_OCT_PARAM, 0, 2, 1, "Sub Octave", {"0", "-1", "-2"});
   configParam(KICK_PARAM, 1, 2, 1, "Sample");
+
+  configInput(GATE, "Gate");
+  configInput(PITCH_ENV_IN, "Ext. Pitch Envelope");
+  configInput(PITCH_DECAY_CV_IN, "Pitch Decay CV");
+  configInput(PITCH_SUSTAIN_CV_IN, "Pitch Sustain CV");
+  configInput(PITCH_RELEASE_CV_IN, "Pitch Release CV");
+  configInput(AMP_ENV_IN, "Ext. Amp Envelope");
+  configInput(AMP_ATTACK_CV_IN, "Amp Attack CV");
+  configInput(AMP_DECAY_CV_IN, "Amp Decay CV");
+  configInput(AMP_SUSTAIN_CV_IN, "Amp Sustain CV");
+  configInput(AMP_RELEASE_CV_IN, "Amp Release CV");
+  configInput(BLEND_CV_IN, "Blend CV");
+  configInput(TUNE_CV_IN, "Tune CV");
+  configInput(SUBOCT_MIX_CV, "Sub Oct. Mix CV");
+  configInput(SUBOCT_WAVE_CV, "Sub Oct. Wave CV");
+  configOutput(OUT, "Audio");
 
   gate = new SynthDevKit::CV(0.5);
   sampleManager = sampleManager->getInstance();

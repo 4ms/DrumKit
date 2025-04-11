@@ -23,6 +23,7 @@ struct SampleController : Module {
   DrumKit::Sample *getSample(uint8_t);
   virtual uint8_t sampleId(uint8_t);
   virtual float getTune(uint8_t);
+  void setupWidgetNames(unsigned numSamples, unsigned defaultSample);
 
   SynthDevKit::CV *cv[MAX_MODULES];
   DrumKit::SampleManagerContext ctx[MAX_MODULES];
